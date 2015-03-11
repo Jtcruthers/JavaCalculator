@@ -28,9 +28,9 @@ public final class DoubleCalculator {
          * about controller
          */
 
-//        DoubleCalcModel model = new DoubleCalcModel1();
-//        DoubleCalcView view = new DoubleCalcView1();
-//        DoubleCalcController controller = new DoubleCalcController1(model, view);
+        DoubleCalcModel model = new DoubleCalcModel1();
+        DoubleCalcView view = new DoubleCalcView1();
+        DoubleCalcController controller = new DoubleCalcController1(model, view);
 
         /*
          * view.registerObserver(controller);
