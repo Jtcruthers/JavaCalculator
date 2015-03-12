@@ -11,7 +11,7 @@ public interface DoubleCalcView extends ActionListener {
      * @param controller
      *            controller to register
      */
-    void registerOvserver(DoubleCalcController controller);
+    void registerObserver(DoubleCalcController controller);
 
     /**
      * Updates first user input.

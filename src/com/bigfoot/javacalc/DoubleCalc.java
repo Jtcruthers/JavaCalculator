@@ -6,12 +6,12 @@ package com.bigfoot.javacalc;
  * @author Ryan Tomlinson and Justin Carruthers
  *
  */
-public final class DoubleCalculator {
+public final class DoubleCalc {
 
     /**
      * Private constructor so this utility class cannot be instantiated.
      */
-    private DoubleCalculator() {
+    private DoubleCalc() {
     }
 
     /**
@@ -32,9 +32,7 @@ public final class DoubleCalculator {
         DoubleCalcView view = new DoubleCalcView1();
         DoubleCalcController controller = new DoubleCalcController1(model, view);
 
-        /*
-         * view.registerObserver(controller);
-         */
+        view.registerObserver(controller);
 
     }
 }
