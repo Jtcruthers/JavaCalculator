@@ -16,4 +16,24 @@ public interface DoubleCalcController {
      *
      */
     void processEnterEvent();
+
+    void processSquareRootEvent();
+
+    void processSquareEvent();
+
+    void processPowerEvent();
+
+    void processDivideEvent();
+
+    void processMultiplyEvent();
+
+    void processSubtractEvent();
+
+    void processAddEvent();
+
+    void processPosNegEvent();
+
+    void processDigitEvent(double input);
+
+    void processAddDigit(double input);
 }

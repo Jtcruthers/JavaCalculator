@@ -10,33 +10,45 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
     /**
      *
      */
-    private double input1 = 0, input2 = 0, output = 0;
+    private double firstInput, secondInput, output;
 
     /**
      *
      */
     public DoubleCalcModel1() {
-        this.input1 = 0;
-        this.input2 = 0;
+        this.firstInput = 0;
+        this.secondInput = 0;
         this.output = 0;
 
     }
 
+    //Returns firstInput
     @Override
-    public Double input1() {
-
-        return this.input1;
+    public double firstInput() {
+        return this.firstInput;
     }
 
+    //Returns secondInput
     @Override
-    public Double input2() {
-
-        return this.input2();
+    public double secondInput() {
+        return this.secondInput();
     }
 
+    //Returns output
     @Override
-    public Double output() {
-
+    public double output() {
         return this.output();
+    }
+
+    //Sets firstInput
+    @Override
+    public void setFirstInput(double firstInput) {
+        this.firstInput = firstInput;
+    }
+
+    //Sets secondInput
+    @Override
+    public void setSecondInput(double secondInput) {
+        this.secondInput = secondInput;
     }
 }

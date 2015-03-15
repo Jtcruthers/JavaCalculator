@@ -1,3 +1,6 @@
+package com.bigfoot.javacalc;
+
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -27,17 +30,25 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
 
     /**
      *
-     * @author Ryan
+     * This enum allows us to know what button was just hit. This will help us
+     * determine what to do next.
+     *
      *
      */
     private static enum State {
 
-        // TODO - Do we need these?
-
         SAW_CLEAR,
         SAW_ENTER,
         SAW_OTHER_OP,
-        SAW_DIGIT
+        SAW_DIGIT,
+        SAW_ADD,
+        SAW_SUB,
+        SAW_ROOT,
+        SAW_SQUARE,
+        SAW_MULTIPLY,
+        SAW_DIVIDE,
+        SAW_POSNEG,
+        SAW_DEC
 
     }
 
@@ -55,7 +66,7 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
      *
      */
     private final JButton bClear, bEnter, bAdd, bSubtract, bMultiply, bDivide,
-    bSquare, bSquareRoot, bDecimal, bPosNeg;
+            bSquare, bSquareRoot, bDecimal, bPosNeg;
 
     /**
      *
@@ -80,11 +91,9 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
         super("Calculator");
 
         // Set up the GUI widgets
-
         this.currentState = State.SAW_CLEAR;
 
         // Text Area
-
         this.tOutput = new JTextArea("", TEXT_AREA_HEIGHT, TEXT_AREA_WIDTH);
         this.tOutput.setEditable(false);
 
@@ -94,8 +103,9 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
         // we can just use if statements to see if there's anything in the text
         // box and if there isn't we just do nothing.
 
-        // Create scroll pane
+        // I'm not sure. We will have to talk about it.
 
+        // Create scroll pane
         JScrollPane outputTextScroll = new JScrollPane(this.tOutput);
 
         // Create main button panel
@@ -206,9 +216,72 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
     }
 
     @Override
-    public void actionPerformed(ActionEvent arg0) {
-        // TODO Auto-generated method stub
+    public void actionPerformed(ActionEvent event) {
 
+        //Set the cursor to wait
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        //Determine which event happens
+        Object source = event.getSource();
+        if (source == this.bClear) {
+            this.controller.processClearEvent();
+            this.currentState = State.SAW_CLEAR;
+        } else if (source == this.bEnter) {
+            this.controller.processEnterEvent();
+            this.currentState = State.SAW_ENTER;
+        } else if (source == this.bAdd) {
+            this.controller.processAddEvent();
+            this.currentState = State.SAW_ADD;
+        } else if (source == this.bSubtract) {
+            this.controller.processSubtractEvent();
+            this.currentState = State.SAW_SUB;
+        } else if (source == this.bMultiply) {
+            this.controller.processMultiplyEvent();
+            this.currentState = State.SAW_MULTIPLY;
+        } else if (source == this.bDivide) {
+            this.controller.processDivideEvent();
+            this.currentState = State.SAW_DIVIDE;
+        } else if (source == this.bSquare) {
+            this.controller.processSquareEvent();
+            this.currentState = State.SAW_SQUARE;
+        } else if (source == this.bSquareRoot) {
+            this.controller.processSquareRootEvent();
+            this.currentState = State.SAW_ROOT;
+        } else if (source == this.bPosNeg) {
+            this.controller.processPosNegEvent();
+            this.currentState = State.SAW_POSNEG;
+        } else {
+            for (int i = 0; i < DIGIT_BUTTONS; i++) {
+                if (source == this.bDigits[i]) {
+                    switch (this.currentState) {
+                        case SAW_ENTER:
+                            this.controller.processClearEvent();
+                            break;
+                        case SAW_ADD:
+                            break;
+                        case SAW_SUB:
+                            break;
+                        case SAW_MULTIPLY:
+                            break;
+                        case SAW_DIVIDE:
+                            break;
+                        case SAW_SQUARE:
+                            break;
+                        case SAW_ROOT:
+                            break;
+                        case SAW_DIGIT:
+                            double counter = i;
+                            this.controller.processAddDigit(counter);
+                            break;
+                        default:
+                            break;
+                    }
+                    this.controller.processAddDigit(i);
+                    this.currentState = State.SAW_DIGIT;
+                    break;
+                }
+            }
+        }
     }
 
     @Override
@@ -217,6 +290,7 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
 
     }
 
+    //We might need to change this. I'm not sure yet.
     @Override
     public void updateInput1(Double d) {
         // TODO Auto-generated method stub

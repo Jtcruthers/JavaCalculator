@@ -5,21 +5,26 @@ public interface DoubleCalcModel {
     /**
      * Reports the first input.
      *
-     * @return this.input1
+     * @return this.firstInput
      */
-    Double input1();
+    double firstInput();
 
     /**
      * Reports the second input.
      *
-     * @return this.input2
+     * @return this.secondInput
      */
-    Double input2();
+    double secondInput();
 
     /**
      * Reports the output.
      *
      * @return this.output
      */
-    Double output();
+    double output();
+
+    void setFirstInput(double firstInput);
+
+    void setSecondInput(double secondInput);
+
 }
