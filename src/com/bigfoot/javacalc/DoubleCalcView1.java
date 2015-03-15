@@ -66,7 +66,7 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
      *
      */
     private final JButton bClear, bEnter, bAdd, bSubtract, bMultiply, bDivide,
-            bSquare, bSquareRoot, bDecimal, bPosNeg;
+    bSquare, bSquareRoot, bDecimal, bPosNeg;
 
     /**
      *
@@ -270,8 +270,6 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
                         case SAW_ROOT:
                             break;
                         case SAW_DIGIT:
-                            double counter = i;
-                            this.controller.processAddDigit(counter);
                             break;
                         default:
                             break;
