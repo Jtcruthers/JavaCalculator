@@ -227,6 +227,7 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
             this.controller.processClearEvent();
             this.currentState = State.SAW_CLEAR;
         } else if (source == this.bEnter) {
+            //Code for enter
             this.controller.processEnterEvent();
             this.currentState = State.SAW_ENTER;
         } else if (source == this.bAdd) {
