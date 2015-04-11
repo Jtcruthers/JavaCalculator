@@ -14,22 +14,6 @@ public interface DoubleCalcView extends ActionListener {
     void registerObserver(DoubleCalcController controller);
 
     /**
-     * Updates first user input.
-     *
-     * @param d
-     *            new value of input 1
-     */
-    void updateInput1(Double d);
-
-    /**
-     * Updates second user input.
-     *
-     * @param d
-     *            new value of input 2
-     */
-    void updateInput2(Double d);
-
-    /**
      * Updates output.
      *
      * @param d

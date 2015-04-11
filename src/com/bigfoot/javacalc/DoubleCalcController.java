@@ -34,6 +34,4 @@ public interface DoubleCalcController {
     void processPosNegEvent();
 
     void processDigitEvent(double input);
-
-    void processAddDigit(double input);
 }

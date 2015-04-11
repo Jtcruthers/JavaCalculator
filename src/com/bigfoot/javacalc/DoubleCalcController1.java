@@ -24,14 +24,10 @@ public final class DoubleCalcController1 implements DoubleCalcController {
         /*
          * Get model info
          */
-        double firstInput = this.model.firstInput();
-        double secondInput = this.model.secondInput();
-        double output = this.model.output();
+        double output = this.model.getOutput();
         /*
          * Update view to reflect changes in model
          */
-        this.view.updateInput1(firstInput);
-        this.view.updateInput2(secondInput);
         this.view.updateOutput(output);
     }
 
@@ -45,114 +41,119 @@ public final class DoubleCalcController1 implements DoubleCalcController {
     public DoubleCalcController1(DoubleCalcModel model, DoubleCalcView view) {
         this.model = model;
         this.view = view;
-    }
-
-    @Override
-    public void processClearEvent() {
-        /*
-         * Retrieve values
-         */
-        double firstInput = this.model.firstInput();
-        double secondInput = this.model.secondInput();
-        double output = this.model.output();
-        /*
-         * Clear them in response to event
-         */
-        firstInput = 0;
-        secondInput = 0;
-        output = 0;
-        /*
-         * Update view to reflect changes in model
-         */
         this.updateViewToMatchModel();
     }
 
     @Override
     public void processEnterEvent() {
+        double firstInput = this.model.getFirstInput();
+        double secondInput = this.model.getSecondInput();
 
-        // TODO: fill in body
+        switch (this.model.getState()) {
+            case "SAW_ENTER":
 
-    }
-
-    @Override
-    public void processAddEvent() {
-
-        // TODO: fill in body
-
-    }
-
-    @Override
-    public void processSubtractEvent() {
-
-        // TODO: fill in body
-
-    }
-
-    @Override
-    public void processMultiplyEvent() {
-
-        // TODO: fill in body
-
-    }
-
-    @Override
-    public void processDivideEvent() {
-
-        // TODO: fill in body
-
-    }
-
-    @Override
-    public void processPowerEvent() {
-
-        // TODO: fill in body
-
-    }
-
-    @Override
-    public void processSquareRootEvent() {
-
-        // TODO: fill in body
-
-    }
-
-    @Override
-    public void processSquareEvent() {
-
-        // TODO: fill in body
-
-    }
-
-    @Override
-    public void processPosNegEvent() {
-
-        // TODO: fill in body
-
-    }
-
-    /**
-     * THIS ISNT RIGHT. We need to figure out how to determine which input to
-     * alter. However, I do think this is how we need to do it. Because they
-     * enter the digit in the biggest column first and we want to see each digit
-     * they hit in real time, this is the way to go. If the last button they hit
-     * was a digit, then we need to add whatever button to the end.
-     *
-     * @param input
-     */
-    @Override
-    public void processAddDigit(double input) {
-
-        double tmp = this.model.firstInput();
-        tmp *= 10;
-        tmp += input;
-        this.model.setFirstInput(tmp);
+                this.processClearEvent();
+                break;
+            case "SAW_ADD":
+                break;
+            case "SAW_SUB":
+                break;
+            case "SAW_MULTIPLY":
+                break;
+            case "SAW_DIVIDE":
+                break;
+            case "SAW_SQUARE":
+                break;
+            case "SAW_ROOT":
+                break;
+            case "SAW_DIGIT":
+                break;
+            default:
+                break;
+        }
         this.updateViewToMatchModel();
 
     }
 
     @Override
-    public void processDigitEvent(double input) {
+    public void processAddEvent() {
+        this.model.setCurrentState("SAW_ADD");
+        this.model.setMode("ADD");
+        this.model.setNumber(false);
+    }
 
-        // if (this.view.currentState == this.view.State.)
+    @Override
+    public void processSubtractEvent() {
+        this.model.setCurrentState("SAW_SUB");
+        this.model.setMode("SUB");
+        this.model.setNumber(false);
+    }
+
+    @Override
+    public void processMultiplyEvent() {
+        this.model.setCurrentState("SAW_MULTIPLY");
+        this.model.setMode("MULT");
+        this.model.setNumber(false);
+    }
+
+    @Override
+    public void processDivideEvent() {
+        this.model.setCurrentState("SAW_DIVIDE");
+        this.model.setMode("DIV");
+        this.model.setNumber(false);
+    }
+
+    @Override
+    public void processPowerEvent() {
+        this.model.setCurrentState("SAW_POWER");
+        this.model.setMode("POWER");
+        this.model.setNumber(false);
+    }
+
+    @Override
+    public void processSquareRootEvent() {
+        this.model.setCurrentState("SAW_ROOT");
+        this.model.setMode("ROOT");
+        this.model.setNumber(false);
+    }
+
+    @Override
+    public void processSquareEvent() {
+        this.model.setCurrentState("SAW_SQUARE");
+        this.model.setMode("SQUARE");
+        this.model.setNumber(false);
+    }
+
+    @Override
+    public void processPosNegEvent() {
+        this.model.setCurrentState("SAW_POSNEG");
+    }
+
+    @Override
+    public void processDigitEvent(double input) {
+        double first = this.model.getFirstInput();
+        double second = this.model.getSecondInput();
+
+        if (this.model.getNumber()) {
+            first = first * 10 + input;
+            this.model.setFirstInput(first);
+        } else {
+            second = second * 10 + input;
+            this.model.setSecondInput(second);
+        }
+        this.model.setCurrentState("SAW_DIGIT");
+        this.updateViewToMatchModel();
+    }
+
+    @Override
+    public void processClearEvent() {
+        /*
+         * Clear them in response to event
+         */
+        this.model.clears();
+        /*
+         * Update view to reflect changes in model
+         */
+        this.updateViewToMatchModel();
     }
 }
