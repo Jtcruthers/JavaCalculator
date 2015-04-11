@@ -21,7 +21,7 @@ public interface DoubleCalcView extends ActionListener {
     void registerObserver(DoubleCalcController controller);
 
     /**
-     * Updates output.
+     * Updates output displayed in GUI.
      *
      * @param d
      *            new value of output

@@ -11,52 +11,52 @@ package com.bigfoot.javacalc;
 public interface DoubleCalcController {
 
     /**
-     *
+     * Processes what to do when user clicks Clear.
      */
     void processClearEvent();
 
     /**
-     *
+     * Processes what to do when user clicks Enter.
      */
     void processEnterEvent();
 
     /**
-     *
+     * Processes what to do when user clicks Square Root.
      */
     void processSquareRootEvent();
 
     /**
-     *
+     * Processes what to do when user clicks Square.
      */
     void processSquareEvent();
 
     /**
-     *
+     * Processes what to do when user clicks Power.
      */
     void processPowerEvent();
 
     /**
-     *
+     * Processes what to do when user clicks Divide.
      */
     void processDivideEvent();
 
     /**
-     *
+     * Processes what to do when user clicks Multiply.
      */
     void processMultiplyEvent();
 
     /**
-     *
+     * Processes what to do when user clicks Subtract.
      */
     void processSubtractEvent();
 
     /**
-     *
+     * Processes what to do when user clicks Add.
      */
     void processAddEvent();
 
     /**
-     *
+     * Processes what to do when user clicks +/-.
      */
     void processPosNegEvent();
 
