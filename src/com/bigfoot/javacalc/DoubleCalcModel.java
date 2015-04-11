@@ -1,7 +1,12 @@
 package com.bigfoot.javacalc;
 
 /**
+ * The interface for the calculator's Model class. It holds all the data for the
+ * calculator. It's methods are basically just Getters and Setters with the
+ * addition of a Clears method to reset the data.
+ *
  * @author Justin Carruthers
+ *
  */
 public interface DoubleCalcModel {
 
@@ -97,7 +102,7 @@ public interface DoubleCalcModel {
     /**
      * Sets which number the calculator is working on.
      *
-     * @param num
+     * @param firstNumber
      *            The number the calculator is working on
      */
     void setNumber(boolean firstNumber);

@@ -2,6 +2,13 @@ package com.bigfoot.javacalc;
 
 import java.awt.event.ActionListener;
 
+/**
+ * The interface for the calculator's View class. It's only public methods are
+ * too associate it with a controller and all itself to be updated.
+ *
+ * @author Justin Carruthers
+ *
+ */
 public interface DoubleCalcView extends ActionListener {
 
     /**

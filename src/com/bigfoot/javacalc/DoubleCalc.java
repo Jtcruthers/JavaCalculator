@@ -1,7 +1,7 @@
 package com.bigfoot.javacalc;
 
 /**
- * Double Calculator application.
+ * A GUI Calculator that works with doubles.
  *
  * @author Ryan Tomlinson and Justin Carruthers
  *

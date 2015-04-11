@@ -13,7 +13,7 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
     private double firstInput, secondInput, output;
 
     /**
-     * The enum of possible buttons pressed.
+     * An enumeration containing possible buttons pressed.
      *
      */
     private static enum State {
@@ -33,14 +33,17 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
     }
 
     /**
-     * The enum of possible operation modes.
+     * An enumeration containing possible operation modes.
      *
      */
     public static enum Mode {
         ADD, SUB, DIV, MULT, SQUARE, POWER, ROOT, NULL
     }
 
-    public boolean firstNumber;
+    /**
+     *
+     */
+    private boolean firstNumber;
 
     /**
      * What button was just pressed by the calculator.
@@ -119,12 +122,14 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
 
     @Override
     public void setCurrentState(String state) {
-        this.currentState.valueOf(state);
+        State newState = State.valueOf(state);
+        this.currentState = newState;
     }
 
     @Override
     public void setMode(String mode) {
-        this.currentMode.valueOf(mode);
+        Mode newMode = Mode.valueOf(mode);
+        this.currentMode = newMode;
     }
 
     @Override
