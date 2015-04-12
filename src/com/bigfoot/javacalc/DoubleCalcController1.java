@@ -49,29 +49,39 @@ public final class DoubleCalcController1 implements DoubleCalcController {
         double firstInput = this.model.getFirstInput();
         double secondInput = this.model.getSecondInput();
 
-        switch (this.model.getState()) {
-            case "SAW_ENTER":
+        if (!this.model.getNumber()) {
+            switch (this.model.getMode()) {
+                case "ADD":
+                    this.model.setOutput(firstInput + secondInput);
+                    break;
+                case "SUB":
+                    this.model.setOutput(firstInput - secondInput);
+                    break;
+                case "DIV":
+                    this.model.setOutput(firstInput / secondInput);
+                    break;
+                case "MULT":
+                    this.model.setOutput(firstInput * secondInput);
+                    break;
+                case "POWER":
+                    this.model.setOutput(Math.pow(firstInput, secondInput));
+                    break;
+                default:
+                    break;
+            }
+            this.updateViewToMatchModel();
+        } else {
+            switch (this.model.getMode()) {
+                case "SQUARE":
+                    this.model.setOutput(firstInput * firstInput);
+                    break;
+                case "ROOT":
+                    this.model.setOutput(Math.sqrt(firstInput));
+                    break;
+                default:
 
-                this.processClearEvent();
-                break;
-            case "SAW_ADD":
-                break;
-            case "SAW_SUB":
-                break;
-            case "SAW_MULTIPLY":
-                break;
-            case "SAW_DIVIDE":
-                break;
-            case "SAW_SQUARE":
-                break;
-            case "SAW_ROOT":
-                break;
-            case "SAW_DIGIT":
-                break;
-            default:
-                break;
+            }
         }
-        this.updateViewToMatchModel();
 
     }
 
@@ -79,49 +89,49 @@ public final class DoubleCalcController1 implements DoubleCalcController {
     public void processAddEvent() {
         this.model.setCurrentState("SAW_ADD");
         this.model.setMode("ADD");
-        this.model.setNumber(false);
+        this.model.firstOrSecond(false);
     }
 
     @Override
     public void processSubtractEvent() {
         this.model.setCurrentState("SAW_SUB");
         this.model.setMode("SUB");
-        this.model.setNumber(false);
+        this.model.firstOrSecond(false);
     }
 
     @Override
     public void processMultiplyEvent() {
         this.model.setCurrentState("SAW_MULTIPLY");
         this.model.setMode("MULT");
-        this.model.setNumber(false);
+        this.model.firstOrSecond(false);
     }
 
     @Override
     public void processDivideEvent() {
         this.model.setCurrentState("SAW_DIVIDE");
         this.model.setMode("DIV");
-        this.model.setNumber(false);
+        this.model.firstOrSecond(false);
     }
 
     @Override
     public void processPowerEvent() {
         this.model.setCurrentState("SAW_POWER");
         this.model.setMode("POWER");
-        this.model.setNumber(false);
+        this.model.firstOrSecond(false);
     }
 
     @Override
     public void processSquareRootEvent() {
         this.model.setCurrentState("SAW_ROOT");
         this.model.setMode("ROOT");
-        this.model.setNumber(false);
+        this.model.firstOrSecond(false);
     }
 
     @Override
     public void processSquareEvent() {
         this.model.setCurrentState("SAW_SQUARE");
         this.model.setMode("SQUARE");
-        this.model.setNumber(false);
+        this.model.firstOrSecond(false);
     }
 
     @Override

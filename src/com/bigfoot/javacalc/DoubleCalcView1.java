@@ -37,7 +37,7 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
      *
      */
     private final JButton bClear, bEnter, bAdd, bSubtract, bMultiply, bDivide,
-            bSquare, bSquareRoot, bDecimal, bPosNeg;
+    bSquare, bSquareRoot, bDecimal, bPosNeg;
 
     /**
      *
@@ -202,13 +202,11 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
         }
     }
 
-    // Sets the controller to our controller.
     @Override
     public void registerObserver(DoubleCalcController controller) {
         this.controller = controller;
     }
 
-    //Updates the output
     @Override
     public void updateOutput(Double d) {
         this.tOutput.setText(Double.toString(d));

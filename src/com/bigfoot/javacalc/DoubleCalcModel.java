@@ -105,6 +105,6 @@ public interface DoubleCalcModel {
      * @param firstNumber
      *            The number the calculator is working on
      */
-    void setNumber(boolean firstNumber);
+    void firstOrSecond(boolean firstNumber);
 
 }

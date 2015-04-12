@@ -43,7 +43,7 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
     /**
      *
      */
-    private boolean firstNumber;
+    private boolean firstOrSecond;
 
     /**
      * What button was just pressed by the calculator.
@@ -72,7 +72,7 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
         this.output = 0;
         this.currentState = State.SAW_CLEAR;
         this.currentMode = Mode.NULL;
-        this.firstNumber = true;
+        this.firstOrSecond = true;
     }
 
     @Override
@@ -102,7 +102,7 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
 
     @Override
     public boolean getNumber() {
-        return this.firstNumber;
+        return this.firstOrSecond;
     }
 
     @Override
@@ -133,7 +133,7 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
     }
 
     @Override
-    public void setNumber(boolean firstNumber) {
-        this.firstNumber = firstNumber;
+    public void firstOrSecond(boolean trueForFirst) {
+        this.firstOrSecond = trueForFirst;
     }
 }
