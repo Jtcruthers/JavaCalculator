@@ -124,14 +124,12 @@ public final class DoubleCalcController1 implements DoubleCalcController {
     public void processSquareRootEvent() {
         this.model.setCurrentState("SAW_ROOT");
         this.model.setMode("ROOT");
-        this.model.firstOrSecond(false);
     }
 
     @Override
     public void processSquareEvent() {
         this.model.setCurrentState("SAW_SQUARE");
         this.model.setMode("SQUARE");
-        this.model.firstOrSecond(false);
     }
 
     @Override
