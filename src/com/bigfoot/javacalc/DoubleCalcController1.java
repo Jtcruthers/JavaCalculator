@@ -147,9 +147,11 @@ public final class DoubleCalcController1 implements DoubleCalcController {
         if (this.model.getNumber()) {
             first = first * 10 + input;
             this.model.setFirstInput(first);
+            this.model.setOutput(first);
         } else {
             second = second * 10 + input;
             this.model.setSecondInput(second);
+            this.model.setOutput(second);
         }
         this.model.setCurrentState("SAW_DIGIT");
         this.updateViewToMatchModel();
