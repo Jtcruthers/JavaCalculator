@@ -23,7 +23,7 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
     /**
      *
      */
-    private boolean firstOrSecond;
+    private boolean firstOrSecond, hasBeenEntered;
 
     /**
      * What operation the calculator is going to perform.
@@ -46,6 +46,7 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
         this.output = 0;
         this.currentMode = Mode.NULL;
         this.firstOrSecond = true;
+        this.hasBeenEntered = false;
     }
 
     @Override
@@ -74,6 +75,11 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
     }
 
     @Override
+    public boolean getHasBeenEntered() {
+        return this.hasBeenEntered;
+    }
+
+    @Override
     public void setFirstInput(double firstInput) {
         this.firstInput = firstInput;
     }
@@ -97,5 +103,10 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
     @Override
     public void firstOrSecond(boolean trueForFirst) {
         this.firstOrSecond = trueForFirst;
+    }
+
+    @Override
+    public void setHasBeenEntered(boolean hBE) {
+        this.hasBeenEntered = hBE;
     }
 }

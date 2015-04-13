@@ -53,6 +53,13 @@ public interface DoubleCalcModel {
     boolean getFirstOrSecond();
 
     /**
+     * Reports whether or not the user has already hit enter.
+     *
+     * @return true if the user has already pressed enter.
+     */
+    boolean getHasBeenEntered();
+
+    /**
      * Sets the pre-operation number.
      *
      * @param firstInput
@@ -91,5 +98,13 @@ public interface DoubleCalcModel {
      *            The number the calculator is working on
      */
     void firstOrSecond(boolean firstNumber);
+
+    /**
+     * Sets whether or not the enter button was hit.
+     *
+     * @param hBE
+     *            True if user hit enter
+     */
+    void setHasBeenEntered(boolean hBE);
 
 }

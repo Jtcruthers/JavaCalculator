@@ -37,7 +37,7 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
      *
      */
     private final JButton bClear, bEnter, bAdd, bSubtract, bMultiply, bDivide,
-    bSquare, bSquareRoot, bDecimal, bPosNeg;
+            bSquare, bSquareRoot, bDecimal, bPosNeg;
 
     /**
      *
@@ -177,7 +177,6 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
         if (source == this.bClear) {
             this.controller.processClearEvent();
         } else if (source == this.bEnter) {
-            //Code for enter
             this.controller.processEnterEvent();
         } else if (source == this.bAdd) {
             this.controller.processAddEvent();

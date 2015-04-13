@@ -46,9 +46,20 @@ public final class DoubleCalcController1 implements DoubleCalcController {
 
     @Override
     public void processEnterEvent() {
+        /*
+         * Get both the input numbers.
+         */
         double firstInput = this.model.getFirstInput();
         double secondInput = this.model.getSecondInput();
 
+        /*
+         * Tell calculator enter has been hit.
+         */
+        this.model.setHasBeenEntered(true);
+
+        /*
+         * Determine if one or two numbers were given and which op to perform.
+         */
         if (!this.model.getFirstOrSecond()) {
             switch (this.model.getMode()) {
                 case "ADD":
@@ -81,14 +92,15 @@ public final class DoubleCalcController1 implements DoubleCalcController {
 
             }
         }
+
         this.updateViewToMatchModel();
 
     }
 
     @Override
     public void processAddEvent() {
-        this.model.setMode("ADD");
-        this.model.firstOrSecond(false);
+        this.model.setMode("ADD"); //Set's calculators mode to addition
+        this.model.firstOrSecond(false); //Change to work on second number now.
     }
 
     @Override
@@ -118,6 +130,7 @@ public final class DoubleCalcController1 implements DoubleCalcController {
     @Override
     public void processSquareRootEvent() {
         this.model.setMode("ROOT");
+        //No need to set firstOrSecond to false since this only requires 1 #.
     }
 
     @Override
@@ -127,6 +140,9 @@ public final class DoubleCalcController1 implements DoubleCalcController {
 
     @Override
     public void processPosNegEvent() {
+        /*
+         * Determines which number to negate and does it.
+         */
         if (this.model.getFirstOrSecond()) {
             this.model.setFirstInput(this.model.getFirstInput() * -1);
             this.model.setOutput(this.model.getFirstInput());
@@ -134,6 +150,7 @@ public final class DoubleCalcController1 implements DoubleCalcController {
             this.model.setSecondInput(this.model.getSecondInput() * -1);
             this.model.setOutput(this.model.getSecondInput());
         }
+
         this.updateViewToMatchModel();
     }
 
@@ -142,6 +159,17 @@ public final class DoubleCalcController1 implements DoubleCalcController {
         double first = this.model.getFirstInput();
         double second = this.model.getSecondInput();
 
+        /*
+         * If user hit enter, clear the output when user hits another digit
+         */
+        if (this.model.getHasBeenEntered()) {
+            this.model.clears();
+            this.model.setOutput(this.model.getFirstInput());
+        }
+
+        /*
+         * Determine which number to add the digit to, and add it.
+         */
         if (this.model.getFirstOrSecond()) {
             first = first * 10 + input;
             this.model.setFirstInput(first);
@@ -151,6 +179,7 @@ public final class DoubleCalcController1 implements DoubleCalcController {
             this.model.setSecondInput(second);
             this.model.setOutput(second);
         }
+
         this.updateViewToMatchModel();
     }
 
