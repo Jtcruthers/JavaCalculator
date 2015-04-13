@@ -13,26 +13,6 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
     private double firstInput, secondInput, output;
 
     /**
-     * An enumeration containing possible buttons pressed.
-     *
-     */
-    private static enum State {
-        SAW_CLEAR,
-        SAW_ENTER,
-        SAW_OTHER_OP,
-        SAW_DIGIT,
-        SAW_ADD,
-        SAW_SUB,
-        SAW_POWER,
-        SAW_ROOT,
-        SAW_SQUARE,
-        SAW_MULTIPLY,
-        SAW_DIVIDE,
-        SAW_POSNEG,
-        SAW_DEC
-    }
-
-    /**
      * An enumeration containing possible operation modes.
      *
      */
@@ -46,13 +26,7 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
     private boolean firstOrSecond;
 
     /**
-     * What button was just pressed by the calculator.
-     *
-     */
-    private State currentState;
-
-    /**
-     * What operation the calculator is going to preform.
+     * What operation the calculator is going to perform.
      */
     private Mode currentMode;
 
@@ -70,7 +44,6 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
         this.firstInput = 0;
         this.secondInput = 0;
         this.output = 0;
-        this.currentState = State.SAW_CLEAR;
         this.currentMode = Mode.NULL;
         this.firstOrSecond = true;
     }
@@ -91,17 +64,12 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
     }
 
     @Override
-    public String getState() {
-        return this.currentState.toString();
-    }
-
-    @Override
     public String getMode() {
         return this.currentMode.toString();
     }
 
     @Override
-    public boolean getNumber() {
+    public boolean getFirstOrSecond() {
         return this.firstOrSecond;
     }
 
@@ -118,12 +86,6 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
     @Override
     public void setOutput(double output) {
         this.output = output;
-    }
-
-    @Override
-    public void setCurrentState(String state) {
-        State newState = State.valueOf(state);
-        this.currentState = newState;
     }
 
     @Override

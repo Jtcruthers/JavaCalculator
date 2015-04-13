@@ -37,13 +37,6 @@ public interface DoubleCalcModel {
     double getOutput();
 
     /**
-     * Reports the state of the model.
-     *
-     * @return the state of the model
-     */
-    String getState();
-
-    /**
      * Reports the mode of the model.
      *
      * @return the mode of the model
@@ -57,7 +50,7 @@ public interface DoubleCalcModel {
      * @return true if the first number is the number being worked on. False
      *         otherwise.
      */
-    boolean getNumber();
+    boolean getFirstOrSecond();
 
     /**
      * Sets the pre-operation number.
@@ -82,14 +75,6 @@ public interface DoubleCalcModel {
      *            The output displayed by the calculator
      */
     void setOutput(double output);
-
-    /**
-     * Sets the state of the calculator.
-     *
-     * @param state
-     *            The state of the calculator
-     */
-    void setCurrentState(String state);
 
     /**
      * Sets the mode of the calculator.

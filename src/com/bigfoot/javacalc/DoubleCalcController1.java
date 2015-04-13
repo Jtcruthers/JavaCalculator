@@ -2,7 +2,7 @@ package com.bigfoot.javacalc;
 
 /**
  *
- * @author Ryan Tomlinson and Justin Carruthers
+ * @author Justin Carruthers and Ryan Tomlinson
  *
  */
 public final class DoubleCalcController1 implements DoubleCalcController {
@@ -49,7 +49,7 @@ public final class DoubleCalcController1 implements DoubleCalcController {
         double firstInput = this.model.getFirstInput();
         double secondInput = this.model.getSecondInput();
 
-        if (!this.model.getNumber()) {
+        if (!this.model.getFirstOrSecond()) {
             switch (this.model.getMode()) {
                 case "ADD":
                     this.model.setOutput(firstInput + secondInput);
@@ -69,7 +69,6 @@ public final class DoubleCalcController1 implements DoubleCalcController {
                 default:
                     break;
             }
-            this.updateViewToMatchModel();
         } else {
             switch (this.model.getMode()) {
                 case "SQUARE":
@@ -82,59 +81,60 @@ public final class DoubleCalcController1 implements DoubleCalcController {
 
             }
         }
+        this.updateViewToMatchModel();
 
     }
 
     @Override
     public void processAddEvent() {
-        this.model.setCurrentState("SAW_ADD");
         this.model.setMode("ADD");
         this.model.firstOrSecond(false);
     }
 
     @Override
     public void processSubtractEvent() {
-        this.model.setCurrentState("SAW_SUB");
         this.model.setMode("SUB");
         this.model.firstOrSecond(false);
     }
 
     @Override
     public void processMultiplyEvent() {
-        this.model.setCurrentState("SAW_MULTIPLY");
         this.model.setMode("MULT");
         this.model.firstOrSecond(false);
     }
 
     @Override
     public void processDivideEvent() {
-        this.model.setCurrentState("SAW_DIVIDE");
         this.model.setMode("DIV");
         this.model.firstOrSecond(false);
     }
 
     @Override
     public void processPowerEvent() {
-        this.model.setCurrentState("SAW_POWER");
         this.model.setMode("POWER");
         this.model.firstOrSecond(false);
     }
 
     @Override
     public void processSquareRootEvent() {
-        this.model.setCurrentState("SAW_ROOT");
         this.model.setMode("ROOT");
     }
 
     @Override
     public void processSquareEvent() {
-        this.model.setCurrentState("SAW_SQUARE");
         this.model.setMode("SQUARE");
     }
 
     @Override
     public void processPosNegEvent() {
-        this.model.setCurrentState("SAW_POSNEG");
+        if (this.model.getFirstOrSecond()) {
+            this.model.setFirstInput(this.model.getFirstInput() * -1);
+            this.model.setOutput(this.model.getFirstInput());
+        } else {
+            this.model.setSecondInput(this.model.getSecondInput() * -1);
+            this.model.setOutput(this.model.getSecondInput());
+        }
+        this.updateViewToMatchModel();
     }
 
     @Override
@@ -142,7 +142,7 @@ public final class DoubleCalcController1 implements DoubleCalcController {
         double first = this.model.getFirstInput();
         double second = this.model.getSecondInput();
 
-        if (this.model.getNumber()) {
+        if (this.model.getFirstOrSecond()) {
             first = first * 10 + input;
             this.model.setFirstInput(first);
             this.model.setOutput(first);
@@ -151,7 +151,6 @@ public final class DoubleCalcController1 implements DoubleCalcController {
             this.model.setSecondInput(second);
             this.model.setOutput(second);
         }
-        this.model.setCurrentState("SAW_DIGIT");
         this.updateViewToMatchModel();
     }
 
