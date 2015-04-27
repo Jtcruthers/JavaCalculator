@@ -3,7 +3,7 @@ package com.bigfoot.javacalc;
 /**
  * A GUI Calculator that works with doubles.
  *
- * @author Ryan Tomlinson and Justin Carruthers
+ * @author Justin Carruthers and Ryan Tomlinson
  *
  */
 public final class DoubleCalc {
