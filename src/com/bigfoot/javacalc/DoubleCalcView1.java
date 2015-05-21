@@ -170,7 +170,7 @@ public final class DoubleCalcView1 extends JFrame implements DoubleCalcView {
     public void actionPerformed(ActionEvent event) {
 
         //Set the cursor to wait
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 
         //Determine which event happens
         Object source = event.getSource();
