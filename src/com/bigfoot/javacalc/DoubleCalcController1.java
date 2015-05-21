@@ -94,7 +94,6 @@ public final class DoubleCalcController1 implements DoubleCalcController {
         }
 
         this.updateViewToMatchModel();
-
     }
 
     @Override
