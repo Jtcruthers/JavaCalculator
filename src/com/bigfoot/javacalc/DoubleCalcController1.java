@@ -162,8 +162,8 @@ public final class DoubleCalcController1 implements DoubleCalcController {
          * If user hit enter, clear the output when user hits another digit
          */
         if (this.model.getHasBeenEntered()) {
-            this.model.clears();
-            this.model.setOutput(this.model.getFirstInput());
+            this.processClearEvent();
+            this.updateViewToMatchModel();
         }
 
         /*
@@ -178,7 +178,7 @@ public final class DoubleCalcController1 implements DoubleCalcController {
             this.model.setSecondInput(second);
             this.model.setOutput(second);
         }
-
+ 
         this.updateViewToMatchModel();
     }
 

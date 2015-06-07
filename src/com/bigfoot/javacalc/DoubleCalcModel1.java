@@ -17,7 +17,7 @@ public final class DoubleCalcModel1 implements DoubleCalcModel {
      *
      */
     public static enum Mode {
-        ADD, SUB, DIV, MULT, SQUARE, POWER, ROOT, NULL
+        ADD, SUB, DIV, MULT, SQUARE, ROOT, NULL
     }
 
     /**
